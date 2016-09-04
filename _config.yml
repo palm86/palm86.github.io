@@ -8,12 +8,11 @@ permalink:        pretty
 # Setup
 title:            Minor Swing
 tagline:          'Phoenix for Djangonauts'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              http://hyde.getpoole.com
+description:      'My Phoenix learnings, where it differs from Django, where it excels and where it lags behind.'
+url:              http://palm86.github.io
 
 author:
   name:           'Daniel Palm'
-  url:            https://twitter.com/mdo
 
 paginate:         5
 
@@ -21,4 +20,4 @@ paginate:         5
 version:          2.0.0
 
 github:
-  repo:           https://github.com/poole/hyde
+  repo:           https://github.com/palm86/palm86.github.io
