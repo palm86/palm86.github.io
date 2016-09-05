@@ -8,9 +8,9 @@ API that facilitates data acquisition, transformation, and presentation. Without
 going into details, the problem lends itself well to functional thinking in the sense that state
 is passed form function to function, transforming the data along the way.
 Therefore, although any language/framework pair would in principle do, the team chose
-Elixir/Phoenix with the believe that the language in which you solve the problem should be as close as possible to the domain of the problem.
+Elixir/Phoenix with the belief that the language in which you solve the problem should be as close as possible to the domain of the problem.
 
-Of course, one of the biggest selling points for functional languages is their
+Of course, one of the biggest selling points of functional languages is their
 performance and concurrency, while one of the biggest drawbacks is arguably their
 syntax and poor productivity. In many respects these pro's and con's are complementary
 to what languages such as Python has to offer. Python/Django has turned out to
