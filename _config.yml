@@ -7,8 +7,8 @@ permalink:        pretty
 
 # Setup
 title:            Minor Swing
-tagline:          'Phoenix for Djangonauts'
-description:      'My Phoenix learnings, where it differs from Django, where it excels and where it lags behind.'
+tagline:          'A Djangonaut learning Phoenix'
+description:      'My Phoenix learnings. Where it differs from Django, where it excels and where it lags behind.'
 url:              http://palm86.github.io
 
 author:
