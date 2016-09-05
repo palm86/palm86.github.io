@@ -16,7 +16,7 @@ syntax and poor productivity. In many respects these pro's and con's are complem
 to what languages such as Python has to offer. Python/Django has turned out to
 be a highly productive pair and while Python is not generally known for its
 speed, with the right tooling, Django scales pretty well (see
-[High Performance Django](https://www.djangoproject.com/)).
+[High Performance Django](https://highperformancedjango.com/)).
 
 [Elixir](http://elixir-lang.org/), released in 2012 by José Valim, is a language that has taken my opinion of functional on an unorthodox dance to
 *Minor Swing*. While it is certainly something to get
