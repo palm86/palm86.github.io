@@ -6,7 +6,7 @@ title: Phoenix for Djangonauts
 I've recently joined a project in which we are building a RESTful
 API that facilitates data acquisition, transformation, and presentation. Without
 going into details, the problem lends itself well to functional thinking in the sense that state
-is passed form function to function, transforming the data along the way.
+is passed from function to function, transforming the data along the way.
 Therefore, although any language/framework pair would in principle do, the team chose
 Elixir/Phoenix with the belief that the language in which you solve the problem should be as close as possible to the domain of the problem.
 
