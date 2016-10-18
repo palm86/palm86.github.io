@@ -9,22 +9,22 @@ In the rest of the posts, I will assume you have Erlang, Elixir, Hex, Phoenix, N
 
 {% highlight bash %}
 # Erlang/Elixir
-$ wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
-$ sudo dpkg -i erlang-solutions_1.0_all.deb
-$ sudo apt-get update
-$ sudo apt-get install esl-erlang elixir
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+sudo dpkg -i erlang-solutions_1.0_all.deb
+sudo apt-get update
+sudo apt-get install esl-erlang elixir
 
 # Hex
-$ mix local.hex
+mix local.hex
 
 # Phoenix
-$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
 
 # Node.js
-$ sudo apt-get install nodejs nodejs-legacy npm
+sudo apt-get install nodejs nodejs-legacy npm
 
 # PostgreSQL
-$ sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install postgresql postgresql-contrib
 {% endhighlight %}
 
 
