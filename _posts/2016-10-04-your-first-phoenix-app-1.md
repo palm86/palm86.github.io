@@ -55,17 +55,27 @@ We will deal with the function of each of these files and folders in due time. I
 *   **lib**: a place for utility modules that are not directly involved in serving responses.
 *   **mix.exs**: similar to manage.py in Django, but more general.
 *   **mix.lock**: plays the role that a requirements.txt file would play in Python.
-*   **package.json**: used by nmp to install assets and node packages for asset management.
+*   **package.json**: used by npm to install assets and node packages for asset management.
 *   **priv**: your static assets and database seeds/fixtures and migrations go here.
 *   **test**: your tests go here.
 *   **web**: your app logic goes here.
 
 Note that you will also have gotten a nicely prepopulated `.gitignore` file tailored to Phoenix's needs.
 
-## Serving the app
+The project's Elixir dependencies as well as its static assets will have been installed as well. These tasks can be performed manually in the future by running `mix deps.get` and `brunch build`.
 
-mix ecto.create
-npm install
-mix phoenix.server
+## Serving the project
+
+Before we can serve the app, we have to run `mix ecto.create` to create a database for the project according to the settings in the config. It is not technically necessary for a Phoenix app to have a database. You can add the `--no-ecto` option when calling `mix phoenix.new` to skip database creation.
+
+Now we can simply change to the "mysite" directory with `cd mysite` and run `mix phoenix.server`, which is the equivalent of `python manage.py runserver` in Django.
 
 Answer yes to any prompts asking you to install a local copy of "rebar".
+
+If you now open [localhost:4000](localhost:4000) in your browser, you should be greeted by the standard Phoenix home page.
+
+We are now at the commit tagged `part1-default-application` in the GitHub repo. Note that you might have to run `npm install`, `brunch build`, and `mix deps.get`. If you haven't followed the steps in the tutorial so far.
+
+## Creating the Poll app
+
+Our use of the term "app" so far has probably led to some confusion for Django developers. Phoenix does not distinguish between projects and apps in the same way that Django does. It is typical for a Django project to consists of tons of apps (which should really have been called plugins), some inside the same project structure, some as external dependencies. The difference should become clearer as we progress with the rest of the tutorial.
