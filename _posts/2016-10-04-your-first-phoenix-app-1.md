@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Your first Phoenix app <span>#1</span>
-published: false
+published: true
 ---
 
 Most Djangonauts probably started learning Django by building, at least in part,
@@ -32,7 +32,7 @@ $ mix phoenix.new mysite
 
 `mix phoenix.new mysite` is the equivalent of `django-admin startproject mysite` and generates a file structure like this:
 
-```
+{% highlight bash %}
 mysite
 ├── brunch-config.js
 ├── _build
@@ -46,8 +46,9 @@ mysite
 ├── README.md
 ├── test
 └── web
-```
-We will deal with the function of each of these files and folders in due time. In short:
+{% endhighlight %}
+
+We will deal with the purpose of these files and folders in due time. In short:
 
 *   **mysite**: the root that contains your project. It can be named whatever you want.
 *   **config**: analogous to the settings.py file or settings module of any Django project.
@@ -82,7 +83,7 @@ Our use of the term "app" so far has probably led to some confusion for Django d
 
 So in Django your next step would have been `python manage.py startapp polls`, which would have created default modules for you models, views, tests, etc. There isn't really an equivalent for this command in Phoenix, because we already have the necessary modules in the web folder:
 
-```
+{% highlight bash %}
 web
 ├── channels
 ├── controllers
@@ -93,7 +94,7 @@ web
 ├── templates
 ├── views
 └── web.ex
-```
+{% endhighlight %}
 
 The folders are mostly self-explanatory and more detail is to follow. But a brief note on the Model-View-Controller (MVC) pattern is warranted here. Django and Phoenix differ in their implementation (or naming) of the MVC pattern components. The mapping is as follows:
 
@@ -116,7 +117,7 @@ The folders are mostly self-explanatory and more detail is to follow. But a brie
 
 Open `mysite/web/controllers/page_controller.ex` and consider its contents:
 
-```
+{% highlight elixir %}
 defmodule Mysite.PageController do
   use Mysite.Web, :controller
 
@@ -124,22 +125,22 @@ defmodule Mysite.PageController do
     render conn, "index.html"
   end
 end
-```
+{% endhighlight %}
 
 It defines the `index` function (or action) that will be called when you visit the root URL. The first argument `conn` contains information about the connection, whereas the second contains any parameters contained in the request body. When called, it renders the `index.html` template. We are not going to change it for now.
 
 In Django the equivalent view (yes it's a view in Django) could look like this:
 
-```
+{% highlight python %}
 from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
-```
+{% endhighlight %}
 
 Or without the shortcuts:
 
-```
+{% highlight python %}
 from django.http import HttpResponse
 from django.template import loader
 
@@ -147,20 +148,21 @@ def index(request):
     t = loader.get_template('index.html')
     c = {}
     return HttpResponse(t.render(c, request))
-```
+{% endhighlight %}
+
 In other words, in Django you can render text directly from within a view:
 
-```
+{% highlight python %}
 from django.http import HttpResponse
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
-```
+{% endhighlight %}
 
 You can do the same thing in Phoenix:
 
-```
+{% highlight elixir %}
 defmodule Mysite.PageController do
   use Mysite.Web, :controller
 
@@ -168,11 +170,11 @@ defmodule Mysite.PageController do
     text(conn, "Hello, world. You're at the polls index.")
   end
 end
-```
+{% endhighlight %}
 
 But let us go the more conventional route and let the view, not the controller, produce the response. Open `mysite/web/views/page_view.ex` and change its contents to:
 
-```
+{% highlight elixir %}
 defmodule Mysite.PageView do
   use Mysite.Web, :view
 
@@ -180,7 +182,7 @@ defmodule Mysite.PageView do
       "Hello, world. You're at the polls index."
   end
 end
-```
+{% endhighlight %}
 
 Now serve the app again and visit the root URL. You should see the text "Hello, world. You're at the polls index." You will also notice that the Phoenix logo is still there. This is because in Phoenix all views are actually rendered within a master layout view. You can find the template for the layout view at `mysite/web/templates/layout/app.html.eex`.
 
@@ -188,28 +190,28 @@ If you browse around, you will also find the index template for `PageView` at `m
 
 So there is our Hello World example, but how did Phoenix know which controller action to call when we visited the root URL? The answer can be found in the following code snippet in `mysite/web/router.ex`:
 
-```
+{% highlight elixir %}
 scope "/", Mysite do
   pipe_through :browser # Use the default browser stack
 
   get "/", PageController, :index
 end
-```
+{% endhighlight %}
 
 It tells Phoenix that `GET` requests to "/" (the root) are to be handled by the `index` action of `PageController`. At this point in time you may or may not still be getting used to the Elixir syntax. The above can also be written as follows, which somehow felt less daunting to me initially:
 
-```
+{% highlight elixir %}
 scope("/", Mysite) do
   pipe_through(:browser) # Use the default browser stack
 
   get("/", PageController, :index)
 end
-```
+{% endhighlight %}
 
 `scope`, `pipe_through`, and `get` are Elixir macros defined by Phoenix that will expand during compilation into function definitions. Don't worry too much about it now.
 
 Note that URL routing in Django is done solely by matching on a URL regex and not by the HTTP method as well as in Phoenix. In Phoenix on the other hand, URLs are not routed to controller actions by custom regex patterns as in Django. The Phoenix way is perhaps less scary to newcomers who don't know regex, but leaves it up to you to validate any parameters such as id's that you get from a URL.
 
-If you wish to grab to code so far, check it out with `git checkout part1-hello-world`.
+If you wish to grab to code so far, check it out with `git checkout part1-hello-world`. Pull requests on either the code or this post are welcome.
 
 In the next post, we will put the database to work and set up the admin interface.
