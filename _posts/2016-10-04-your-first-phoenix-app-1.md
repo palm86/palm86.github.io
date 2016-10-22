@@ -158,7 +158,19 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 ```
 
-Similar shortcuts can be used in Phoenix, but let us go the more conventional route and let the view, not the controller, produce the response. Open `mysite/web/views/page_view.ex` and change its contents to:
+You can do the same thing in Phoenix:
+
+```
+defmodule Mysite.PageController do
+  use Mysite.Web, :controller
+
+  def index(conn, _params) do
+    text(conn, "Hello, world. You're at the polls index.")
+  end
+end
+```
+
+But let us go the more conventional route and let the view, not the controller, produce the response. Open `mysite/web/views/page_view.ex` and change its contents to:
 
 ```
 defmodule Mysite.PageView do
@@ -198,6 +210,6 @@ end
 
 Note that URL routing in Django is done solely by matching on a URL regex and not by the HTTP method as well as in Phoenix. In Phoenix on the other hand, URLs are not routed to controller actions by custom regex patterns as in Django. The Phoenix way is perhaps less scary to newcomers who don't know regex, but leaves it up to you to validate any parameters such as id's that you get from a URL.
 
-If you which to grab to code so far, check it out with `git checkout part1-hello-world`.
+If you wish to grab to code so far, check it out with `git checkout part1-hello-world`.
 
 In the next post, we will put the database to work and set up the admin interface.
