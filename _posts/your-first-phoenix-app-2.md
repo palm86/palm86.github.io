@@ -44,6 +44,13 @@ defmodule Mysite.Question do
 
     has_many :choices, Mysite.Choice
   end
+
+  def changeset(struct, params \\ %{}) do
+      struct
+      |> cast(params, [:question_text, :published_at])
+      |> validate_required([:question_text, :published_at])
+      |> validate_length(:question_text, max: 200)
+  end
 end
 
 #mysite/web/models/choice.ex
@@ -56,6 +63,13 @@ defmodule Mysite.Choice do
 
     field :choice_text, :string
     field :votes, :integer, default: 0
+  end
+
+  def changeset(struct, params \\ %{}) do
+      struct
+      |> cast(params, [:choice_text, :votes])
+      |> validate_required([:choice_text, :votes])
+      |> validate_length(:choice_text, max: 200)
   end
 end
 {% endhighlight %}
